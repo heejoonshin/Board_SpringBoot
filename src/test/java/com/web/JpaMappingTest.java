@@ -14,9 +14,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDateTime;
 
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
+@SuppressWarnings("ALL")
 @RunWith(SpringRunner.class)
 @DataJpaTest
 public class JpaMappingTest {
