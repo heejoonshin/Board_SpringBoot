@@ -14,11 +14,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDateTime;
 
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-@SuppressWarnings("ALL")
+
 @RunWith(SpringRunner.class)
 @DataJpaTest
 public class JpaMappingTest {
@@ -51,7 +50,7 @@ public class JpaMappingTest {
     }
 
     @Test
-    public void 제대로_생성됬는지_테스트(){
+    public void 제대로_생성됬는지_테스트() {
         User user = userRepository.findByEmail(email);
         assertThat(user.getName(), is("havi"));
         assertThat(user.getPassword(), is("test"));
@@ -61,7 +60,7 @@ public class JpaMappingTest {
         assertThat(board.getTitle(), is(boardTestTitle));
         assertThat(board.getSubTitle(), is("서브 타이틀"));
         assertThat(board.getContent(), is("콘텐츠"));
-        assertThat(board.getBoardType(),is(BoardType.free));
+        assertThat(board.getBoardType(), is(BoardType.free));
 
 
     }
