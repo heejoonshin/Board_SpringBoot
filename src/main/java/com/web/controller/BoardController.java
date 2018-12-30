@@ -1,4 +1,4 @@
-package controller;
+package com.web.controller;
 
 import com.web.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping("/board")
 public class BoardController {
+    private final BoardService boardService;
 
-    @Autowired
-    BoardService boardService;
+    public BoardController(BoardService boardService) {
+        this.boardService = boardService;
+    }
 
     @GetMapping({"", "/"})
     public String board(@RequestParam(value = "idx", defaultValue = "0") Long idx, Model model) {
@@ -25,7 +27,8 @@ public class BoardController {
 
     @GetMapping("/list")
     public String list(@PageableDefault Pageable pageable, Model model) {
-        model.addAllAttributes("boardList", boardService.findBoardList(pageable));
+        model.addAttribute("boardList", boardService.findBoardList(pageable));
         return "/board/list";
     }
+
 }
